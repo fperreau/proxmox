@@ -22,37 +22,33 @@ source "proxmox-iso" "ubuntu2404" {
     # Proxmox Connection Settings
     proxmox_url = "${var.proxmox_api_url}"
     username = "${var.proxmox_api_token_id}"
-    token = "${var.proxmox_api_token_secret}"
+    token = "${var.proxmox_api_token_secret}"   
     # (Optional) Skip TLS Verification
-    # insecure_skip_tls_verify = true
+    insecure_skip_tls_verify = true
     
     # VM General Settings
     node = "lab"
     vm_id = "300"
     vm_name = "ubuntu2404"
-    template_description = "Ubuntu Server 24.04 Image"
+    template_description = "Ubuntu Server 24.04 image"
 
-    # VM OS Settings
-    # (Option 1) Local ISO File
-    iso_file = "local:iso/ubuntu-24.04-live-server-amd64.iso"
-    # - or -
-    # (Option 2) Download ISO
-    # iso_url = "https://releases.ubuntu.com/24.04/ubuntu-24.04-live-server-amd64.iso"
-    # iso_checksum = "8762f7e74e4d64d72fceb5f70682e6b069932deedb4949c6975d0f0fe0a91be3"
-    iso_storage_pool = "local"
-    unmount_iso = true
+    boot_iso {
+      type = "scsi"
+      iso_file = "local:iso/ubuntu-24.04-live-server-amd64.iso"
+      unmount = true
+      iso_checksum = "md5:b33b57dea8c827febc89f38b31d532e6"
+    }
 
     # VM System Settings
     qemu_agent = true
 
     # VM Hard Disk Settings
     scsi_controller = "virtio-scsi-pci"
-
     disks {
         disk_size = "20G"
         format = "raw"
         storage_pool = "local-lvm"
-        storage_pool_type = "lvm"
+        #storage_pool_type = "lvm"
         type = "virtio"
     }
 
@@ -68,7 +64,7 @@ source "proxmox-iso" "ubuntu2404" {
         bridge = "vmbr0"
         firewall = "false"
     } 
-
+    
     # VM Cloud-Init Settings
     cloud_init = true
     cloud_init_storage_pool = "local-lvm"
@@ -100,7 +96,7 @@ source "proxmox-iso" "ubuntu2404" {
     # ssh_password        = "your-password"
     # - or -
     # (Option 2) Add your Private SSH KEY file here
-    ssh_private_key_file    = "~/.ssh/fperreau"
+    ssh_private_key_file    = "~/.ssh/id_rsa"
 
     # Raise the timeout, when installation takes longer
     ssh_timeout             = "30m"
@@ -109,7 +105,6 @@ source "proxmox-iso" "ubuntu2404" {
 
 # Build Definition to create the VM Template
 build {
-
     name = "ubuntu2404"
     sources = ["source.proxmox-iso.ubuntu2404"]
 
