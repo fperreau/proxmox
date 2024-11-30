@@ -1,0 +1,33 @@
+#cloud-config
+autoinstall:
+  version: 1
+  locale: en_US
+  keyboard:
+    layout: fr
+  ssh:
+    install-server: true
+    allow-pw: true
+    disable_root: true
+    ssh_quiet_keygen: true
+    allow_public_ssh_keys: true
+  packages:
+    - qemu-guest-agent
+    - sudo
+  storage:
+    layout:
+      name: direct
+    swap:
+      size: 0
+  user-data:
+    package_upgrade: false
+    timezone: Europe/Paris
+    users:
+      - name: perreau
+        groups: [adm, sudo]
+        lock-passwd: false
+        sudo: ALL=(ALL) NOPASSWD:ALL
+        shell: /bin/bash
+        passwd: your-password
+          - cendar
+        ssh_authorized_keys:
+          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDj+kUhraYfDW+moCAN9WKc1v15DmmvWt+wBhWpckyWLEcL6R3/k1iBetYRqd/TF7PBgpQ0Qgcqpiev4ZaKumOEx7y3fd7ALGH4Ph8BAeY4nZLu69qrNd8bnRTNPByPbltX6y/SWuPfIVEsgxiFZicMBAfLwMzhWk0xSzVyMWfBaZelbNlsXaWtZ8TGxxoP2K4hWjU9Oii8BCq2GXTsud+Kt7ucTVn9DDFqMzOawM6cZqSblmyXDJX13UwIUNlEupUEl7eAzJ6rFUSu3jVxXTH/XKekFK6MvADZP4nGhQpPSnsxrANCrYkB+e1/nQbfspLoLv3eSFlpHY7FFvy0nvSD azuread\fredericperreau@KD-W2K11
