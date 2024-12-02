@@ -86,17 +86,17 @@ source "proxmox-iso" "ubuntu2404" {
     # PACKER Autoinstall Settings
     http_directory          = "http" 
     # (Optional) Bind IP Address and Port
-    # http_bind_address       = "0.0.0.0"
-    # http_port_min           = 8802
-    # http_port_max           = 8802
+    http_bind_address       = "0.0.0.0"
+    http_port_min           = 8802
+    http_port_max           = 8802
 
     ssh_username            = "root"
 
     # (Option 1) Add your Password here
-    # ssh_password        = "your-password"
+    ssh_password        = "cendar"
     # - or -
     # (Option 2) Add your Private SSH KEY file here
-    ssh_private_key_file    = "~/.ssh/id_rsa"
+    # ssh_private_key_file    = "~/.ssh/id_rsa"
 
     # Raise the timeout, when installation takes longer
     ssh_timeout             = "30m"
