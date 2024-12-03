@@ -16,14 +16,14 @@ variable "proxmox_api_token_secret" {
     sensitive = true
 }
 
-# Resource Definiation for the VM Template
+# Resource Definition for the VM Template
 source "proxmox-iso" "ubuntu2404" {
  
     # Proxmox Connection Settings
     proxmox_url = "${var.proxmox_api_url}"
     username = "${var.proxmox_api_token_id}"
     token = "${var.proxmox_api_token_secret}"   
-    # (Optional) Skip TLS Verification
+    
     insecure_skip_tls_verify = true
     
     # VM General Settings
@@ -86,26 +86,26 @@ source "proxmox-iso" "ubuntu2404" {
     # PACKER Autoinstall Settings
     http_directory          = "http" 
     # (Optional) Bind IP Address and Port
-    http_bind_address       = "0.0.0.0"
-    http_port_min           = 8802
-    http_port_max           = 8802
+    # http_bind_address     = "0.0.0.0"
+    # http_port_min         = 8802
+    # http_port_max         = 8802
 
-    ssh_username            = "root"
+    ssh_username            = "perreau"
 
     # (Option 1) Add your Password here
-    ssh_password        = "cendar"
+    ssh_password            = "cendar"
     # - or -
     # (Option 2) Add your Private SSH KEY file here
-    # ssh_private_key_file    = "~/.ssh/id_rsa"
+    ssh_private_key_file    = "~/.ssh/id_rsa"
 
     # Raise the timeout, when installation takes longer
-    ssh_timeout             = "30m"
+    ssh_timeout             = "15m"
     ssh_pty                 = true
 }
 
 # Build Definition to create the VM Template
 build {
-    name = "ubuntu2404"
+    name = "ubu2404"
     sources = ["source.proxmox-iso.ubuntu2404"]
 
     # Provisioning the VM Template for Cloud-Init Integration in Proxmox #1

@@ -22,12 +22,11 @@ autoinstall:
     package_upgrade: false
     timezone: Europe/Paris
     users:
-      - name: perreau
+      - name: ubuntu
         groups: [adm, sudo]
         lock-passwd: false
         sudo: ALL=(ALL) NOPASSWD:ALL
         shell: /bin/bash
-        passwd: your-password
-          - cendar
+        passwd: passw0rd
         ssh_authorized_keys:
-          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCna/GDLP0cGVd/yg4DSZP+7aAP1V06NF6xSFVCyoZZW5flq8QNQSU7fIXYWxQF1hW4F8ep7DdkuPeK39XTwcDbShWET/1djL/67ZjJZNtEObryi9MslxrBN+vRVoG4NRJ/2TfxNEGsXfQ+c25xDwz2jJ7oartKwLGpSAeQvTtM7tWZThfin9t6tExVFLLS75W+1hjr3yiRn44czmjX8UjD9tvSUZ0BK2V94TFgvjZrj2MRHt/N0bjdZbb8j7ZDedVMtWuo0am0W0aHA0yD6BM+IDQ6sGVp5GRmlRBEgkpF4IEbEHcMhLngebOL59DaPazS4vl1ANTCTvKLwC4U/5sr perreau@KD-W2K11
+          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC1f4/2f1db89FKDOZk8TYH3tRrQzDUHsASN3cEiA5cJunoYihNC6PBUXrZlNbPgH4OzzczYrZ2yHFYfmrHoSzyjDrPZdbt3reCs7rLDLzHzjJ+FNFQoVJa+0HbgW9ctnRuQzKQxvspwpsQwXWnpjXWzNBjRagW+m8DP5aDx6/y6p47dD6cTERUflsVgEY9ohn4lURAs8pUo4gn6o6QurzEtUapdV8xfgdNnzJJlVCxA8BkyHgUSdm7bEyrd7Yd6XGT+7TEq2XokhvwKaF8bWj8yz/mM5zZ644muDFmDouSaFz3cEmNRwa1dAxYhl2R5jVYE4oH6deipaZpDPuwcjuX perreau@lab
