@@ -22,15 +22,14 @@ source "proxmox-iso" "ubuntu2404" {
     # Proxmox Connection Settings
     proxmox_url = "${var.proxmox_api_url}"
     username = "${var.proxmox_api_token_id}"
-    token = "${var.proxmox_api_token_secret}"   
-    
+    token = "${var.proxmox_api_token_secret}"
     insecure_skip_tls_verify = true
     
     # VM General Settings
     node = "lab"
     vm_id = "300"
-    vm_name = "ubuntu2404"
-    template_description = "Ubuntu Server 24.04 image"
+    vm_name = "ubu2404"
+    template_description = "Ubuntu Server 24.04 template"
 
     boot_iso {
       type = "scsi"
@@ -90,16 +89,16 @@ source "proxmox-iso" "ubuntu2404" {
     # http_port_min         = 8802
     # http_port_max         = 8802
 
-    ssh_username            = "perreau"
+    ssh_username            = "ubuntu"
 
     # (Option 1) Add your Password here
-    ssh_password            = "cendar"
+    # ssh_password            = "passw0rdpassw0rd"
     # - or -
     # (Option 2) Add your Private SSH KEY file here
     ssh_private_key_file    = "~/.ssh/id_rsa"
 
     # Raise the timeout, when installation takes longer
-    ssh_timeout             = "15m"
+    ssh_timeout             = "10m"
     ssh_pty                 = true
 }
 
